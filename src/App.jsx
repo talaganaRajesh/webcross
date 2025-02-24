@@ -2,7 +2,7 @@ import { ThemeProvider } from "./components/theme-provider"
 import Header from "./components/Header"
 import Footer from "./components/Footer"
 import Home from "./pages/Home"
-import CustomCursor from "./components/CustomCursor"
+import CustomCursor from "./components/BubbleCursor"
 
 export default function App() {
   return (

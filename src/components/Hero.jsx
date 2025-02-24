@@ -48,7 +48,7 @@ dark:drop-shadow-[0_0_20px_rgba(255,212,21,0.4)] dark:filter brightness-125">
             <a
               href="#"
               rel="noopener noreferrer"
-              className="text-sm dark:hover:bg-slate-950 transition-all duration-300 px-4 py-3 rounded-sm font-semibold leading-6 text-foreground"
+              className="text-sm transition-all duration-300 px-4 py-3 rounded-sm font-semibold leading-6 text-foreground"
             >
               Learn more <span aria-hidden="true">→</span>
             </a>
