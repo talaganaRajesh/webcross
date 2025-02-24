@@ -1,0 +1,97 @@
+import { useState, useEffect } from "react"
+import { useTheme } from "../components/theme-provider"
+import { motion } from "framer-motion"
+import { MoonIcon, SunIcon } from "@heroicons/react/24/outline"
+
+import logo from "../assets/webcross-white-logo.png"
+
+export default function Header() {
+  const [mounted, setMounted] = useState(false)
+  const { theme, setTheme } = useTheme()
+  const [activeTab, setActiveTab] = useState("")
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => setMounted(true), [])
+
+  // Handle scrolling effect
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 350) {
+        setIsScrolled(true)
+      } else {
+        setIsScrolled(false)
+      }
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  // Set active tab from URL hash or localStorage on load
+  useEffect(() => {
+    const savedTab = localStorage.getItem("activeTab") || window.location.hash.replace("#", "") || "Work"
+    setActiveTab(savedTab)
+  }, [])
+
+  // Update active tab and save to localStorage
+  const handleTabClick = (tab) => {
+    setActiveTab(tab)
+    localStorage.setItem("activeTab", tab)
+  }
+
+  return (
+    <motion.header
+      className={`fixed top-0 z-40 w-full transition-all text-center duration-300 ${
+        isScrolled ? "h-20 bg-opacity-90 shadow-md rounded-full my-2" : "h-20"
+      } bg-background/80 backdrop-blur-md`}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6 }}
+    >
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8 h-full" aria-label="Global">
+        <motion.div
+          className="flex lg:flex-1 transition-all"
+        >
+          <a onClick={handleTabClick} href="/" className="-m-1.5 p-1.5 flex items-center gap-x-2">
+            <img
+              className={`transition-all duration-300 ${isScrolled ? "ml-32 h-8" : "h-12"} w-auto`}
+              src={theme === "dark" ? logo : logo.replace("-white", "")}
+              alt="Web Cross Logo"
+            />
+            <h1 className={`font-bold transition-all ${isScrolled ? "text-lg" : "text-xl"}`}>Web Cross</h1>
+          </a>
+        </motion.div>
+
+        <div className="flex gap-x-12">
+          {["Work", "About", "Contact"].map((tab) => (
+            <a
+              key={tab}
+              href={`#${tab.toLowerCase()}`}
+              onClick={() => handleTabClick(tab)}
+              className={`text-sm hover:text-yellow-600 transition-all font-semibold leading-6 ${
+                activeTab === tab ? "text-yellow-500" : "text-foreground hover:text-primary"
+              }`}
+            >
+              {tab}
+            </a>
+          ))}
+        </div>
+
+        <motion.div
+          className="flex flex-1 justify-end transition-all duration-300"
+          animate={{ scale: isScrolled ? 0.85 : 1 }}
+        >
+          {mounted && (
+            <button
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className={`px-4 py-2 shadow-md rounded-full transition-all duration-300 ${
+                isScrolled ? "bg-gray-300 mr-32 dark:bg-gray-800" : "bg-gray-200 dark:bg-black"
+              }`}
+            >
+              {theme === "dark" ? <SunIcon className="w-5 h-5 text-yellow-400" /> : <MoonIcon className="w-5 h-5 text-gray-700 dark:text-gray-300" />}
+            </button>
+          )}
+        </motion.div>
+      </nav>
+    </motion.header>
+  )
+}
