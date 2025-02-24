@@ -6,6 +6,8 @@ import Timeline from "../components/Timeline"
 import Marquee from "../components/Marquee"
 import ContactForm from "../components/ContactForm"
 
+
+
 export default function Home() {
   return (
     <>

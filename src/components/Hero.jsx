@@ -64,7 +64,7 @@ dark:drop-shadow-[0_0_20px_rgba(255,212,21,0.4)] dark:filter brightness-125">
             <img
               src={heroImage}
               alt="hero"
-              className="w-[500px] animate-floating rounded-2xl shadow-xl ring-1 ring-gray-900/10"
+              className="w-[500px] animate-floating "
             />
           </div>
         </motion.div>

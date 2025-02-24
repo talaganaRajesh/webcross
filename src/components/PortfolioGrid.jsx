@@ -8,6 +8,7 @@ import photographyImage from "../assets/photographyDemo.png"
 import zyskImage from "../assets/digitalDemo.png"
 import photographyImage2 from "../assets/photographyDemo2.png"
 import getmaterialImage from "../assets/getmaterial.png"
+import photographyImage3 from "../assets/photography2.png"
 
 const projects = [
   {
@@ -15,30 +16,42 @@ const projects = [
     title: "Photography website",
     description: "Minimalist design for a photography portfolio",
     imageUrl: photographyImage2,
+    path:"http://mspractice.wuaze.com/"
   },
   {
     id: 2,
     title: "Photography portfolio",
     description: "Elegant online presence for a luxury photography studio",
     imageUrl:  photographyImage,
+    path:"https://lemonstudio.vercel.app/"
   },
   {
     id: 3,
     title: "ZYSK Technology",
     description: "User-friendly website for a digital solutions agency",
     imageUrl: zyskImage,
+    path:"https://zysk-webd.vercel.app/"
   },
   {
     id: 4,
     title: "Agency website",
     description: "Clean and modern visual communication for an agency",
     imageUrl: agencyImage,
+    path:"https://webcros.vercel.app/"
   },
   {
     id: 5,
     title: "Software platform",
     description: "A platform to share and get notes for students",
     imageUrl: getmaterialImage,
+    path:"https://getmaterial.vercel.app/"
+  },
+  {
+    id: 6,
+    title: "Photography website",
+    description: "Minimalist design for a photography portfolio",
+    imageUrl: photographyImage3,
+    path:"https://photofills.vercel.app/"
   },
  
 ]
@@ -93,7 +106,7 @@ export default function PortfolioGrid() {
                   <div className="text-sm font-medium text-primary mb-1">{project.category}</div>
                   <h3 className="text-xl font-semibold text-foreground mb-2">{project.title}</h3>
                   <a
-                    href="https://www.flowersandsaints.com.au"
+                    href={project.path}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-primary hover:underline inline-flex items-center"
