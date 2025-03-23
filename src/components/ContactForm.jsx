@@ -13,8 +13,6 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
   email: z.string().email({ message: "Please enter a valid email address." }),
-  phoneNumber: z.string().min(10, { message: "Please enter a valid phone number." }),
-  budget: z.string().min(1, { message: "Please enter your budget." }),
   message: z.string().min(10, { message: "Message must be at least 10 characters." }),
 })
 
@@ -26,8 +24,6 @@ export default function ContactForm() {
     defaultValues: {
       name: "",
       email: "",
-      phoneNumber: "",
-      budget: "",
       message: "",
     },
   })
@@ -104,7 +100,7 @@ export default function ContactForm() {
                 )}
               />
               <div className="flex justify-center">
-                <Button type="submit" className="w-1/2 mt-5 text-black font-bold bg-[#fad598]" disabled={isSubmitting}>
+                <Button type="submit" className="w-1/2 mt-5 text-black font-bold bg-[#fad598] hover:bg-[#f8ba57] transition-all duration-300 hover:border-black hover:border-2" disabled={isSubmitting}>
                   {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>
               </div>

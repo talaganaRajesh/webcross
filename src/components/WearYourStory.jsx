@@ -23,7 +23,7 @@ export default function WearYourStory() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <a
-              href="https://www.flowersandsaints.com.au"
+              href="https://webcros.vercel.app/work"
               target="_blank"
               rel="noopener noreferrer"
               className="apple-button inline-flex items-center"

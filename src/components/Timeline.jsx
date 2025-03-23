@@ -6,17 +6,17 @@ import { motion, useScroll, useTransform, useSpring, useInView } from "framer-mo
 const timelineEvents = [
   {
     year: 2022,
-    title: "Web Cross",
+    title: "Web Cros",
     description: "Our journey began with a passion for minimal design and floral artistry.",
     details:
-      "Web Cross was born from a deep passion for minimal design and floral artistry, blending elegance and creativity to craft visually stunning digital experiences inspired by nature’s grace.",
+      "Web Cros was born from a deep passion for minimal design and floral artistry, blending elegance and creativity to craft visually stunning digital experiences inspired by nature’s grace.",
   },
   {
     year: 2023,
     title: "Local Contracts",
     description: "Reached out local clients for providing web solutions.",
     details:
-      "In 2023, Web Cross expanded its reach by securing local contracts, offering tailored web solutions to local clients and helping businesses establish a strong digital presence.",
+      "In 2023, Web Cros expanded its reach by securing local contracts, offering tailored web solutions to local clients and helping businesses establish a strong digital presence.",
   },
   {
     year: 2024,
@@ -30,7 +30,7 @@ const timelineEvents = [
     title: "Got international clients",
     description: "Worked with international clients and explored the wide range of digital era .",
     details:
-      "Collaborated with clients across different countries, delivering customized web solutions and gaining insights into global market trends, further refining our expertise in the digital space.",
+      "Collaborated with clients a Cros different countries, delivering customized web solutions and gaining insights into global market trends, further refining our expertise in the digital space.",
   },
   {
     year: 2025,
@@ -83,6 +83,7 @@ export default function Timeline() {
     damping: 30,
     restDelta: 0.001,
   })
+  
 
   return (
     <section ref={containerRef} className="py-20 bg-background overflow-hidden">
@@ -94,7 +95,7 @@ export default function Timeline() {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-3xl font-bold text-foreground sm:text-4xl">Our Journey</h2>
-          <p className="mt-4 text-lg text-muted-foreground">The evolution of web cross through the years</p>
+          <p className="mt-4 text-lg text-muted-foreground">The evolution of web Cros through the years</p>
         </motion.div>
 
         <div className="relative">

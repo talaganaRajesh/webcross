@@ -4,6 +4,10 @@ import { motion } from "framer-motion"
 import { MoonIcon, SunIcon } from "@heroicons/react/24/outline"
 
 import logo from "../assets/webcross-white-logo.png"
+import logoBlack from "../assets/webcross-logo.png"
+
+
+import { Link } from "react-router-dom"
 
 export default function Header() {
   const [mounted, setMounted] = useState(false)
@@ -54,25 +58,25 @@ export default function Header() {
           <a onClick={handleTabClick} href="/" className="-m-1.5 p-1.5 flex items-center gap-x-2">
             <img
               className={`transition-all duration-300 ${isScrolled ? "ml-32 h-8" : "h-12"} w-auto`}
-              src={theme === "dark" ? logo : logo.replace("-white", "")}
-              alt="Web Cross Logo"
+              src={theme === "dark" ? logo : logoBlack}
+              alt="WC"
             />
-            <h1 className={`font-bold transition-all ${isScrolled ? "text-lg" : "text-xl"}`}>Web Cross</h1>
+            <h1 className={`font-bold transition-all ${isScrolled ? "text-lg" : "text-xl"}`}>Web Cros</h1>
           </a>
         </motion.div>
 
         <div className="flex gap-x-12">
           {["Work", "About", "Contact"].map((tab) => (
-            <a
+            <Link
               key={tab}
-              href={`#${tab.toLowerCase()}`}
+              to={`${tab.toLowerCase()}`}
               onClick={() => handleTabClick(tab)}
               className={`text-sm hover:text-yellow-600 transition-all font-semibold leading-6 ${
                 activeTab === tab ? "text-yellow-500" : "text-foreground hover:text-primary"
               }`}
             >
               {tab}
-            </a>
+            </Link>
           ))}
         </div>
 

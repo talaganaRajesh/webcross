@@ -18,8 +18,8 @@ export default function Hero() {
 text-transparent bg-clip-text drop-shadow-[0_0_20px_rgba(200,120,30,0.5)] filter dark:brightness-110 
 dark:from-[rgb(255,212,21)] dark:via-[rgb(253,233,170)] dark:to-[rgb(245,142,24)] 
 dark:drop-shadow-[0_0_20px_rgba(255,212,21,0.4)] dark:filter brightness-125">
-  Website Services
-</span>
+              Website Services
+            </span>
 
 
 
@@ -39,12 +39,15 @@ dark:drop-shadow-[0_0_20px_rgba(255,212,21,0.4)] dark:filter brightness-125">
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <a
-              href="#"
+              href="https://api.whatsapp.com/send?phone=+919861381747&text=Hello%20Web%20Cros%20Team!%20I'm%20interested%20in%20learning%20more%20about%20your%20services."
+              target="_blank"
               rel="noopener noreferrer"
               className="apple-button"
             >
               Book a Call
             </a>
+
+
             <a
               href="#"
               rel="noopener noreferrer"
