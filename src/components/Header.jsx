@@ -65,14 +65,23 @@ export default function Header() {
           </a>
         </motion.div>
 
-        <div className="flex gap-x-12">
+        <div className="flex justify-center items-center gap-x-12 transition-all duration-700">
+        <Link
+              to="/"
+              onClick={() => handleTabClick("Home")}
+              className={`text-sm hover:border hover:border-zinc-600 py-1 px-4 rounded-sm mx-2 my-2  hover:text-yellow-600 transition-all font-semibold leading-6 ${
+                activeTab === "Home" ? "text-yellow-500" : "text-foreground hover:text-primary"
+              }`}
+            >
+              Home
+            </Link>
           {["Work", "About", "Contact"].map((tab) => (
             <Link
               key={tab}
               to={`${tab.toLowerCase()}`}
               onClick={() => handleTabClick(tab)}
-              className={`text-sm hover:text-yellow-600 transition-all font-semibold leading-6 ${
-                activeTab === tab ? "text-yellow-500" : "text-foreground hover:text-primary"
+              className={`text-sm hover:text-yellow-600 hover:border hover:border-zinc-600 py-1 px-4 mx-2 my-2 rounded-sm transition-all font-semibold leading-6                ${
+                activeTab === tab ? "text-yellow-500 " : "text-foreground hover:text-primary"
               }`}
             >
               {tab}

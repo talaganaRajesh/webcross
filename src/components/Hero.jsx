@@ -3,6 +3,8 @@
 import { motion } from "framer-motion"
 import heroImage from "../assets/hero-image.png"
 
+import { Link } from "react-router-dom"
+
 export default function Hero() {
   return (
     <div className="relative isolate overflow-hidden bg-background">
@@ -48,13 +50,12 @@ dark:drop-shadow-[0_0_20px_rgba(255,212,21,0.4)] dark:filter brightness-125">
             </a>
 
 
-            <a
-              href="#"
-              rel="noopener noreferrer"
-              className="text-sm transition-all duration-300 px-4 py-3 rounded-sm font-semibold leading-6 text-foreground"
+            <Link
+              to="/about"
+              className="text-sm hover:border hover:border-zinc-500 transition-all duration-300 px-4 py-2 rounded-sm font-semibold leading-6 text-foreground"
             >
               Learn more <span aria-hidden="true">→</span>
-            </a>
+            </Link>
           </motion.div>
         </div>
         <motion.div

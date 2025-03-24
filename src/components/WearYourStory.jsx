@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { Link } from "react-router-dom"
 
 export default function WearYourStory() {
   return (
@@ -22,10 +23,8 @@ export default function WearYourStory() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <a
-              href="https://webcros.vercel.app/work"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/work"
               className="apple-button inline-flex items-center"
             >
               Explore Collection
@@ -38,7 +37,7 @@ export default function WearYourStory() {
               >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
-            </a>
+            </Link>
           </motion.div>
         </motion.div>
       </div>

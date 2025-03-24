@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { motion } from "framer-motion"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -9,6 +9,7 @@ import { Input } from "./ui/input"
 import { Textarea } from "./ui/textarea"
 import { Button } from "./ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "./ui/form"
+import emailjs from "@emailjs/browser"
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -18,6 +19,7 @@ const formSchema = z.object({
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const formRef = useRef();
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -28,14 +30,31 @@ export default function ContactForm() {
     },
   })
 
-  function onSubmit(values) {
+  async function onSubmit(values) {
     setIsSubmitting(true)
-    setTimeout(() => {
-      console.log(values)
+    
+    try {
+      // Send email using EmailJS
+      const response = await emailjs.sendForm(
+        "service_qz4k4dj", // Replace with your EmailJS service ID
+        "template_eqqwafd", // Replace with your EmailJS template ID
+        formRef.current,
+        "euR6k35JV2W9ALU3h" // Replace with your EmailJS public key
+      );
+
+      if (response.status === 200) {
+        console.log(values)
+        form.reset()
+        alert("Thank you for your message. We'll get back to you soon!")
+      } else {
+        throw new Error("Failed to send message")
+      }
+    } catch (error) {
+      console.error("Error sending message:", error)
+      alert("Message failed to send. Please try again later or contact us directly.")
+    } finally {
       setIsSubmitting(false)
-      form.reset()
-      alert("Thank you for your message. We'll get back to you soon!")
-    }, 2000)
+    }
   }
 
   return (
@@ -48,18 +67,18 @@ export default function ContactForm() {
           className="text-center mb-12"
         >
           <h2 className="text-3xl font-bold text-foreground sm:text-4xl mb-4">Get in Touch</h2>
-          <p className="text-lg text-muted-foreground">
-            We'd love to hear from you. Fill out the form below and we'll get back to you as soon as possible.
+          <p className="text-sm text-muted-foreground">
+           We would love to hear you , fill out the form below and we'll get back to you soon.
           </p>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-sm mx-auto"
+          className="max-w-md mx-auto"
         >
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <form ref={formRef} onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <FormField
                 control={form.control}
                 name="name"
@@ -100,7 +119,7 @@ export default function ContactForm() {
                 )}
               />
               <div className="flex justify-center">
-                <Button type="submit" className="w-1/2 mt-5 text-black font-bold bg-[#fad598] hover:bg-[#f8ba57] transition-all duration-300 hover:border-black hover:border-2" disabled={isSubmitting}>
+                <Button type="submit" className="w-full mt-5 text-black font-bold bg-[#fad598] hover:bg-[#f8ba57] transition-all duration-300 hover:border-black hover:border-2" disabled={isSubmitting}>
                   {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>
               </div>

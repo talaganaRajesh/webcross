@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 export default function Footer() {
   return (
     <footer className="bg-background border-t border-gray-500">
@@ -17,7 +19,9 @@ export default function Footer() {
           ))}
         </nav>
         <p className="mt-10 text-center text-sm leading-5 text-muted-foreground">
-          Designed & Developed with ❤️ by Team Web cross
+          <Link to="/">
+          Designed & Developed with ❤️ by Team Web cros
+          </Link>
         </p>
       </div>
     </footer>

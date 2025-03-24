@@ -19,7 +19,7 @@ export default function Marquee() {
                 WebkitTextStroke: "1px rgb(156 163 175)", // tailwind gray-400
               }}
             >
-              WEB CROSS # Web design / development
+             # WEB CROS # Web design / Web site development #
             </span>
           </div>
         ))}

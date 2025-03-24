@@ -11,7 +11,7 @@ const BUBBLE_CONFIG = {
 
 class Particle {
   constructor(x, y) {
-    this.lifeSpan = Math.floor(Math.random() * BUBBLE_CONFIG.baseLifeSpan + BUBBLE_CONFIG.baseLifeSpan);
+    this.lifeSpan = Math.floor(Math.random() * (BUBBLE_CONFIG.baseLifeSpan / 2) + (BUBBLE_CONFIG.baseLifeSpan / 2));
     this.initialLifeSpan = this.lifeSpan;
     this.velocity = {
       x: (Math.random() < 0.5 ? -1 : 1) * BUBBLE_CONFIG.velocityX,
@@ -84,14 +84,18 @@ export default function BubbleCursor() {
       animationFrameRef.current = requestAnimationFrame(animate);
     };
 
+    let lastSpawnTime = 0;
+    const spawnInterval = 50; // Minimum time (ms) between particle spawns
+    
     const handleMouseMove = (e) => {
-      cursorRef.current = {
-        x: e.clientX,
-        y: e.clientY
-      };
-      addParticle(e.clientX, e.clientY);
+      const now = Date.now();
+      if (now - lastSpawnTime > spawnInterval) {
+        cursorRef.current = { x: e.clientX, y: e.clientY };
+        addParticle(e.clientX, e.clientY);
+        lastSpawnTime = now;
+      }
     };
-
+    
     const handleTouchMove = (e) => {
       if (e.touches.length > 0) {
         Array.from(e.touches).forEach(touch => {
