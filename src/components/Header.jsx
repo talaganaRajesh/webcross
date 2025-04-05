@@ -55,7 +55,7 @@ export default function Header() {
         <motion.div
           className="flex lg:flex-1 transition-all"
         >
-          <a  className="-m-1.5 p-1.5 flex items-center gap-x-2">
+          <a onClick={handleTabClick} href="/" className="-m-1.5 p-1.5 flex items-center gap-x-2">
             <img
               className={`transition-all duration-300 ${isScrolled ? "ml-32 h-8" : "h-12"} w-auto`}
               src={theme === "dark" ? logo : logoBlack}
